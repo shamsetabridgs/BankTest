@@ -77,6 +77,8 @@
         <a class="active" href="#home">Home</a>
         <a href="#news">News</a>
         <a href="#contact">Contact</a>
+        <a href="{{ route('deposits.create') }}">Create Deposit</a>
+        <a href="{{ route('deposits.index') }}">View Deposits</a> 
         <a href="#about">About</a>
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

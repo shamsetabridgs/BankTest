@@ -27,6 +27,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/deposits', [DepositController::class, 'index'])->name('deposits.index');
     Route::get('/deposits/create', [DepositController::class, 'create'])->name('deposits.create');
     Route::post('/deposits', [DepositController::class, 'store'])->name('deposits.store');
+
+    Route::get('/deposits/{depositId}/cash-in', [DepositController::class, 'cashInForm'])->name('deposits.cash-in-form');
+    Route::post('/deposits/{depositId}/cash-in', [DepositController::class, 'cashIn'])->name('deposits.cash-in');
 });
 
 

@@ -48,6 +48,8 @@
                 <th>Status</th>
                 <th>Current Amount</th>
                 <th>Available Amount</th>
+                <th>CASH IN</th>
+                <th>CASH OUT</th>
             </tr>
         </thead>
         <tbody>
@@ -59,6 +61,10 @@
                 <td>{{ $deposit->status ? 'Approved' : 'Pending' }}</td>
                 <td>{{ $deposit->current_amount }}</td>
                 <td>{{ $deposit->available_amount }}</td>
+                <td>
+                    <!-- "Cash In" link/button -->
+                    <a href="{{ route('deposits.cash-in-form', $deposit->id) }}">Cash In</a>
+                </td>
             </tr>
             @endforeach
         </tbody>

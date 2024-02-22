@@ -18,6 +18,27 @@ class DepositController extends Controller
         return view('DepositIndex', compact('deposits'));
     }
 
+    public function cashInForm($depositId)
+    {
+        $deposit = Deposit::findOrFail($depositId);
+        return view('cashInForm', compact('deposit'));
+    }
+
+    public function cashIn(Request $request, $depositId)
+    {
+        $request->validate([
+            'cashInAmount' => 'required|numeric|min:0',
+        ], [
+            'cashInAmount.min' => 'Amount must be more than 0.'
+        ]);
+
+        $deposit   = Deposit::findOrFail($depositId);
+        $newAmount = $deposit->amount + $request->cashInAmount;
+        $deposit->update(['amount' => $newAmount]);
+
+        return redirect()->route('deposits.index')->with('success','Cash-in successful.');
+    }
+
 
     public function create()
     {
